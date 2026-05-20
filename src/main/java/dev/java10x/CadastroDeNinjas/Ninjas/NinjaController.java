@@ -3,6 +3,7 @@ package dev.java10x.CadastroDeNinjas.Ninjas;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class NinjaController {
 
   @GetMapping("/boasvindas")
   public String boasVindas() {
-    return  "Olá, Mundo! Essa é minha primeira mensagem nessa rota.";
+    return "Olá, Mundo! Essa é minha primeira mensagem nessa rota.";
   }
 
   // Adicionar Ninja (Create)
@@ -37,9 +38,9 @@ public class NinjaController {
   }
 
   // Mostrar Ninja por ID (Read)
-  @GetMapping("/todosID")
-  public String mostrarNinjasId() {
-    return "Mostrar ninjas por ID";
+  @GetMapping("listar/{id}")
+  public NinjaModel listarNinjaId(@PathVariable Long id) {
+    return ninjaService.listarNinjaId(id);
   }
 
   // Alterar dados do Ninja (Update)
